@@ -31,4 +31,20 @@ node() {
   stage('Cleanup') {
     code.deleteBuilds()
   }
+  post {
+    always {
+
+    }
+    success{
+
+    }
+    failure {
+        deleteDir()
+        cleanWs()
+    }
+    cleanup{
+        deleteDir()
+        cleanWs()
+    }
+}
 }
