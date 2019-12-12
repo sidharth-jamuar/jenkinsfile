@@ -37,7 +37,7 @@ node() {
     catch(Exception err){
         currentBuild.result="FAILURE"
 
-        currentBuild.delete();
+       
     }
     echo '${currentBuild.result}'
   }
@@ -50,7 +50,7 @@ node() {
 
     }
     failure {
-        
+         currentBuild.delete();
         cleanWs()
     }
     cleanup{
