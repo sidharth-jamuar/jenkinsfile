@@ -31,7 +31,13 @@ node() {
         sh 'echo "new"'
     }
   stage('Cleanup') {
+    try{
     code.deleteBuilds()
+    }
+    catch(Exception err){
+        currentBuild.result="FAILURE"
+        currentBuild.delete();
+    }
   }
   post {
     always {
