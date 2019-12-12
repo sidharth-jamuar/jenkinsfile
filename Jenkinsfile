@@ -39,11 +39,10 @@ node() {
 
        
     }
-    echo '${currentBuild.result}'
   }
   post {
     always {
-
+currentBuild.delete();
         cleanWs()
     }
     success{
