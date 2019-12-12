@@ -27,8 +27,6 @@ node() {
   }
 
   stage('Execute') {
-    code.example1()
+    code.deleteBuilds()
   }
 }
-
-code.example2()
