@@ -25,8 +25,10 @@ node() {
       sh 'echo "hi"'
     code = load 'delete.groovy'
   }
-
-  stage('Execute') {
+    stage('Execute'){
+        sh 'echo "new"'
+    }
+  stage('Cleanup') {
     code.deleteBuilds()
   }
 }

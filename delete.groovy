@@ -8,7 +8,7 @@
 // 	}
 
 def deleteBuilds(){
-	def job = Jenkins.instance.getItem("multi-step-pipeline")	
+	def job = Jenkins.instance.getItem("delete-failed-builds")	
 	job.getBuilds().each {
 	if(it.result == Result.FAILURE){
 	// Delete failed job
