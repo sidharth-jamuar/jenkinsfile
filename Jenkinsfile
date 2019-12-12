@@ -57,7 +57,6 @@ pipeline={
 
   stage('Load') {
       sh 'echo "hi"'
-   def code = load 'delete.groovy'
   }
     stage('Execute'){
         sh 'echo "new"'
