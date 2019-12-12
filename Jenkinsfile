@@ -36,8 +36,10 @@ node() {
     }
     catch(Exception err){
         currentBuild.result="FAILURE"
+
         currentBuild.delete();
     }
+    echo '${currentBuild.result}'
   }
   post {
     always {
