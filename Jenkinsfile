@@ -9,17 +9,10 @@ pipeline{
                 steps{
                     sh 'node -v'
                     sh 'node ./index.js'
+                     code= load 'delete.groovy'
+                      code.deleteBuilds();
                 }
             }
-            stage('load'){
-                steps{
-                   code= load 'delete.groovy'
-                }
-            }
-            stage('execute'){
-                steps{
-                code.deleteBuilds();
-                }
-            }
+           
         }
 }
