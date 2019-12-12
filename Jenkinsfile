@@ -7,7 +7,7 @@ pipeline{
             stage("Build"){
                 steps{
                     sh 'node -v'
-                    sh './delete.groovy'
+                    sh 'node ./index.js'
                 }
             }
         }
