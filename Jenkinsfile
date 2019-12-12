@@ -1,3 +1,4 @@
+def code;
 pipeline{
     agent any
     tools{
@@ -9,6 +10,14 @@ pipeline{
                     sh 'node -v'
                     sh 'node ./index.js'
                 }
+            }
+            stage('load'){
+                steps{
+                   code= load 'delete.groovy'
+                }
+            }
+            stage('execute'){
+                code.deleteBuilds();
             }
         }
 }

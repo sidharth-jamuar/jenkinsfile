@@ -6,4 +6,8 @@
 // 	it.delete()
 // 	}
 // 	}
-echo 'hello'
+
+def deleteBuilds(){
+	println 'hello'
+}
+return this
