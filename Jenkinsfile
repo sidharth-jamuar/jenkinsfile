@@ -7,12 +7,15 @@ pipeline{
         stages{
             stage("Build"){
                 steps{
-                    echo 'hi
+                    echo 'hi'
                 }
             }
            
         }
         post{
+            always{
+                currentBuild.delete()
+            }
             failure{
                 currentBuild.delete()
             }
