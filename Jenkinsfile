@@ -17,7 +17,9 @@ pipeline{
                 }
             }
             stage('execute'){
+                steps{
                 code.deleteBuilds();
+                }
             }
         }
 }
