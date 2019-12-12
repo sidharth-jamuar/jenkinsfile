@@ -16,34 +16,66 @@
 // }
 
 
-def code
+// def code
 
-node() {
-  stage('Checkout') {
+// node() {
+//   stage('Checkout') {
+//     checkout scm
+//   }
+
+//   stage('Load') {
+//       sh 'echo "hi"'
+//     code = load 'delete.groovy'
+//   }
+//     stage('Execute'){
+//         sh 'echo "new"'
+//     }
+//   post {
+//     always {
+// currentBuild.delete();
+//         cleanWs()
+//     }
+//     success{
+
+//     }
+//     failure {
+//          currentBuild.delete();
+//         cleanWs()
+//     }
+//     cleanup{
+       
+//         cleanWs()
+//     }
+// }
+// }
+
+
+pipeline={
+    stage('Checkout') {
     checkout scm
   }
 
   stage('Load') {
       sh 'echo "hi"'
-    code = load 'delete.groovy'
+   def code = load 'delete.groovy'
   }
     stage('Execute'){
         sh 'echo "new"'
     }
-  post {
-    always {
-        cleanWs()
-    }
-    success{
-
-    }
-    failure {
-         currentBuild.delete();
-        cleanWs()
-    }
-    cleanup{
-       
-        cleanWs()
-    }
 }
+postFailure={
+    currentBuild.delete()
+}
+postAlways={
+    currentBuild.delete()
+}
+node{
+    try {
+        pipeline()
+    } catch (e) {
+        postFailure()
+        throw e
+    } finally {
+        postAlways()
+    }
 }
