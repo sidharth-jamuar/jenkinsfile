@@ -33,7 +33,8 @@ node() {
   }
   post {
     always {
-
+deleteDir()
+        cleanWs()
     }
     success{
 
