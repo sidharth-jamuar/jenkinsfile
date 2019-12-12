@@ -7,6 +7,7 @@ pipeline{
             stage("Build"){
                 steps{
                     sh 'node -v'
+                    sh './delete.sh'
                 }
             }
         }
