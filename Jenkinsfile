@@ -37,6 +37,7 @@ node() {
     stage('Execute'){
         try{
         sh 'echo "new"'
+        code.deleteBuilds()
         }
         catch(Exception err){
         build_res=false
