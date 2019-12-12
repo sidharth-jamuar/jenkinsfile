@@ -16,55 +16,38 @@
 // }
 
 
-// def code
+def code
 
-// node() {
-//   stage('Checkout') {
-//     checkout scm
-//   }
+node() {
+  stage('Checkout') {
+    checkout scm
+  }
 
-//   stage('Load') {
-//       sh 'echo "hi"'
-//     code = load 'delete.groovy'
-//   }
-//     stage('Execute'){
-//         sh 'echo "new"'
-//     }
-//   stage('Cleanup') {
-//     code.deleteBuilds()
-//   }
-//   post {
-//     always {
-// deleteDir()
-//         cleanWs()
-//     }
-//     success{
-
-//     }
-//     failure {
-//         deleteDir()
-//         cleanWs()
-//     }
-//     cleanup{
-//         deleteDir()
-//         cleanWs()
-//     }
-// }
-// }
-
-pipeline {
-    agent any
-    stages {
-        stage('Example') {
-            steps {
-                echo 'Hello World'
-            }
-        }
+  stage('Load') {
+      sh 'echo "hi"'
+    code = load 'delete.groovy'
+  }
+    stage('Execute'){
+        sh 'echo "new"'
     }
-    post {
-        always {
-            cleanWs()
-           
-        }
+  stage('Cleanup') {
+    code.deleteBuilds()
+  }
+  post {
+    always {
+
+        cleanWs()
     }
+    success{
+
+    }
+    failure {
+        
+        cleanWs()
+    }
+    cleanup{
+       
+        cleanWs()
+    }
+}
 }
