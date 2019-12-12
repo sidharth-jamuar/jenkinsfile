@@ -8,6 +8,7 @@
 // 	}
 
 def deleteBuilds(){
+	println 'hello'
 	def job = Jenkins.instance.getItem("delete-failed-builds")	
 	job.getBuilds().each {
 	if(it.result == Result.FAILURE){
