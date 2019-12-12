@@ -16,7 +16,7 @@
 // }
 def code
 
-node('node-agent') {
+node() {
   stage('Checkout') {
     checkout scm
   }
